@@ -8,6 +8,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -23,6 +24,7 @@ import java.util.Set;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
+@EntityListeners(AuditingEntityListener.class)
 @Entity
 public class Article {
     @Id
@@ -37,7 +39,7 @@ public class Article {
     @ToString.Exclude //양방향 바인딩으로 인한 순환 참조 방지
     @OrderBy("id")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
-    private final Set<ArticleComment> articleCommentSet = new LinkedHashSet<>();
+    private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
     /* 양방향 바인딩 */
 
