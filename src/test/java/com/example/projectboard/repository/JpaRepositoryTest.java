@@ -2,6 +2,7 @@ package com.example.projectboard.repository;
 
 import com.example.projectboard.config.JpaConfig;
 import com.example.projectboard.domain.Article;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
+@Disabled("Spring Data REST 통합테스트는 불필요하므로 제외시킴")
 //@ActiveProfiles("testdb") //for spring.sql.init.mode in application.yaml
 @DisplayName("JPA 연결 테스트")
 @Import(JpaConfig.class) //DataJpaTest는 JpaConfig 존재를 몰라(내가 만들었거든) 그래서 import로 추가
